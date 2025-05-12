@@ -7,6 +7,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
+  <script>
+    const theme = localStorage.getItem('theme') || 'dark';
+    document.body.classList.add(theme);
+  </script>
   <div class="container">
     <h1 class="logo">🔒se<mark>К</mark>ret🔒</h1>
 
