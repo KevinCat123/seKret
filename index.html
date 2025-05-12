@@ -1,29 +1,22 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>seKret</title>
   <link rel="stylesheet" href="style.css">
-  <script defer src="firebase.js"></script>
-  <script defer src="script.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
 </head>
 <body>
-  <h1>🔒 Welcome to seKret</h1>
+  <div class="container">
+    <h1 class="logo">🔒se<mark>К</mark>ret🔒</h1>
 
-  <div id="login-section">
-    <input type="password" id="password-input" placeholder="Enter code">
-    <button onclick="checkPassword()">Login</button>
-    <p id="login-message"></p>
+    <div id="post-list">
+      <!-- Здесь будут появляться записи -->
+    </div>
+
+    <a href="settings.html" class="settings-link">⚙ Настройки</a>
   </div>
 
-  <div id="note-section" style="display:none">
-    <h2>Create Note</h2>
-    <textarea id="note-input" placeholder="Write something..."></textarea>
-    <button onclick="saveNote()">Save Note</button>
-
-    <h2>Notes</h2>
-    <ul id="notes-list"></ul>
-  </div>
+  <script src="script.js"></script>
 </body>
 </html>
