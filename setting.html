@@ -1,18 +1,41 @@
-<script>
-  const themeSelect = document.getElementById('theme-select');
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <title>Настройки | seKret</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <h1 class="logo">⚙ Настройки</h1>
 
-  // Загрузить сохранённую тему
-  const savedTheme = localStorage.getItem('theme');
-  if (savedTheme) {
-    document.body.classList.add(savedTheme);
-    themeSelect.value = savedTheme;
-  } else {
-    document.body.classList.add('dark');
-  }
+    <div class="settings">
+      <label>
+        <input type="radio" name="theme" value="dark" checked>
+        Тёмная тема
+      </label>
+      <label>
+        <input type="radio" name="theme" value="light">
+        Светлая тема
+      </label>
+    </div>
 
-  themeSelect.addEventListener('change', function () {
-    document.body.className = ''; // убрать старую тему
-    document.body.classList.add(this.value);
-    localStorage.setItem('theme', this.value);
-  });
-</script>
+    <a href="index.html" class="back-link">← Назад</a>
+  </div>
+
+  <script>
+    const radios = document.querySelectorAll('input[name=\"theme\"]');
+    radios.forEach(radio => {
+      if (radio.value === localStorage.getItem('theme')) {
+        radio.checked = true;
+      }
+
+      radio.addEventListener('change', () => {
+        localStorage.setItem('theme', radio.value);
+        location.reload();
+      });
+    });
+  </script>
+</body>
+</html>
