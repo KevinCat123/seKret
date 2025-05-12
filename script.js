@@ -1,40 +1,15 @@
-const PASSWORD = "sas";
+// Получаем контейнер для записей
+const postList = document.getElementById("post-list");
 
-function checkPassword() {
-  const input = document.getElementById("password-input").value;
-  if (input === PASSWORD) {
-    document.getElementById("login-section").style.display = "none";
-    document.getElementById("note-section").style.display = "block";
-  } else {
-    document.getElementById("login-message").innerText = "Wrong password!";
-  }
+// Функция для добавления новой записи
+function addPost(text) {
+  const post = document.createElement("div");
+  post.className = "post";
+  post.innerText = text;
+  postList.appendChild(post);
 }
 
-function saveNote() {
-  const noteText = document.getElementById("note-input").value;
-  if (!noteText) return;
+// Пример: добавим одну запись при загрузке
+addPost("🔐 Это пример записи. В будущем здесь будут ваши тексты.");
 
-  const noteRef = database.ref("notes").push();
-  noteRef.set({
-    text: noteText,
-    time: new Date().toISOString()
-  });
-
-  document.getElementById("note-input").value = "";
-}
-
-function loadNotes() {
-  const notesList = document.getElementById("notes-list");
-  database.ref("notes").on("value", snapshot => {
-    notesList.innerHTML = "";
-    snapshot.forEach(child => {
-      const li = document.createElement("li");
-      li.textContent = child.val().text;
-      notesList.appendChild(li);
-    });
-  });
-}
-
-window.onload = () => {
-  loadNotes();
-};
+// Здесь можно будет добавить форму и новые функции позже
